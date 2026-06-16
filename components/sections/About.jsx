@@ -78,14 +78,38 @@ export default function About() {
         </div>
       </div>
 
-      <div className="stats-bar grid grid-cols-2 sm:grid-cols-4" style={{ backgroundColor: '#2E2A24' }}>
-        {stats.map((s, i) => (
-          <div key={i} className="stat-card flex flex-col items-center justify-center py-8 sm:py-10 px-4 border-r border-white/10 last:border-r-0 gap-1">
-            <span className="stat-number font-cormorant font-bold text-white" style={{ fontSize: 'clamp(2rem, 4vw, 3rem)' }} data-target={s.value} data-suffix={s.suffix}>0{s.suffix}</span>
-            <span className="font-dm text-[10px] sm:text-[11px] tracking-[0.18em] uppercase text-white/45">{s.label}</span>
-          </div>
-        ))}
-      </div>
+      <div
+  className="stats-bar grid grid-cols-2 sm:grid-cols-4"
+  style={{ backgroundColor: '#2E2A24', position: 'relative', zIndex: 10 }}
+>
+  {stats.map((s, i) => (
+    <div
+      key={i}
+      className="stat-card flex flex-col items-center justify-center text-center"
+      style={{
+        borderRight: i % 2 === 0 ? '1px solid rgba(255,255,255,0.1)' : 'none',
+        borderBottom: i < 2 ? '1px solid rgba(255,255,255,0.1)' : 'none',
+        padding: '36px 16px 40px',
+        minHeight: '160px',
+      }}
+    >
+      <span
+        className="stat-number font-cormorant font-bold text-white leading-none"
+        style={{ fontSize: 'clamp(2rem, 8vw, 3rem)', marginBottom: '10px' }}
+        data-target={s.value}
+        data-suffix={s.suffix}
+      >
+        0{s.suffix}
+      </span>
+      <span
+        className="font-dm uppercase text-white/45 text-center leading-relaxed"
+        style={{ fontSize: '9px', letterSpacing: '0.15em' }}
+      >
+        {s.label}
+      </span>
+    </div>
+  ))}
+</div>
     </section>
   );
 }
