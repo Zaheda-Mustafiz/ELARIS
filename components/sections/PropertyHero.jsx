@@ -25,8 +25,8 @@ const PROPERTIES = [
   },
   {
     id: 3,
-    name: 'Palm Jumeirah Villa',
-    location: 'Palm Jumeirah, Dubai',
+    name: 'Marina Height apartment',
+    location: 'Dubai Marina Waterfront',
     description: '5-bedroom beachfront villa with direct beach access, private pool, and panoramic Arabian Gulf views.',
     price: 'AED 32,000,000',
     tag: 'BEACHFRONT',
@@ -35,8 +35,8 @@ const PROPERTIES = [
   },
   {
     id: 4,
-    name: 'Palm Jumeirah Villa',
-    location: 'Palm Jumeirah, Dubai',
+    name: 'JBR Beach Front penthouse',
+    location: 'Bluewaters Island',
     description: '5-bedroom beachfront villa with direct beach access, private pool, and panoramic Arabian Gulf views.',
     price: 'AED 32,000,000',
     tag: 'BEACHFRONT',
