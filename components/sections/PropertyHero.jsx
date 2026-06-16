@@ -25,7 +25,7 @@ const PROPERTIES = [
   },
   {
     id: 3,
-    name: 'Palm Jumeirah Villa',
+    name: 'Marina Height apartment',
     location: 'Palm Jumeirah, Dubai',
     description: '5-bedroom beachfront villa with direct beach access, private pool, and panoramic Arabian Gulf views.',
     price: 'AED 32,000,000',
@@ -35,7 +35,7 @@ const PROPERTIES = [
   },
   {
     id: 4,
-    name: 'Palm Jumeirah Villa',
+    name: 'JBR Beach Front penthouse',
     location: 'Palm Jumeirah, Dubai',
     description: '5-bedroom beachfront villa with direct beach access, private pool, and panoramic Arabian Gulf views.',
     price: 'AED 32,000,000',
@@ -157,7 +157,9 @@ export default function PropertyHero() {
         position: 'relative', 
         height: '100vh', 
         overflow: 'hidden', 
-        background: '#0D0C0A' 
+        background: '#0D0C0A' ,
+        marginTop: 0, 
+        display: 'block'
       }}
     >
       {/* Background Images */}
