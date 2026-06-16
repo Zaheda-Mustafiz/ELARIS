@@ -1,0 +1,490 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap');
+
+:root {
+  --cream: #F5EDE3;
+  --offwhite: #FAF7F2;
+  --charcoal: #2E2A24;
+  --stone: #C4B8A8;
+  --ease-luxury: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+*, *::before, *::after { box-sizing: border-box; -webkit-tap-highlight-color: transparent; margin: 0; padding: 0; }
+
+html { scroll-behavior: auto; -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 300;
+  background-color: var(--offwhite);
+  color: var(--charcoal);
+  overflow-x: hidden;
+  cursor: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img { -webkit-user-drag: none; user-select: none; -webkit-backface-visibility: hidden; backface-visibility: hidden; max-width: 100%; display: block; }
+
+::selection { background: var(--charcoal); color: var(--cream); }
+
+/* GPU Layers */
+.hero-bg img, .property-img, .marquee-inner { will-change: transform; transform: translateZ(0); }
+@media (max-width: 768px) { .hero-bg img, .marquee-inner { will-change: auto; } }
+
+/* Custom Cursor */
+.cursor-dot { position: fixed; width: 8px; height: 8px; border-radius: 50%; background: var(--cream); pointer-events: none; z-index: 9999; transform: translate(-50%,-50%); mix-blend-mode: difference; top: 0; left: 0; }
+.cursor-ring { position: fixed; width: 36px; height: 36px; border-radius: 50%; border: 1px solid rgba(245,237,227,0.4); pointer-events: none; z-index: 9998; transform: translate(-50%,-50%); transition: width 0.4s var(--ease-luxury), height 0.4s var(--ease-luxury), background 0.3s ease; top: 0; left: 0; }
+.cursor-ring.hovered { width: 56px; height: 56px; background: rgba(245,237,227,0.06); border-color: rgba(245,237,227,0.8); }
+@media (max-width: 768px) { .cursor-dot, .cursor-ring { display: none; } body { cursor: auto; } }
+
+.font-cormorant { font-family: 'Cormorant Garamond', serif; }
+.font-dm { font-family: 'DM Sans', sans-serif; }
+
+.nav-pill { border: 1px solid rgba(255,255,255,0.35); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); transition: background 0.3s ease; }
+.nav-pill:hover { background: rgba(255,255,255,0.12); }
+
+@keyframes scrollDrop { 0% { opacity: 0; transform: translateY(-6px); } 50% { opacity: 1; transform: translateY(0); } 100% { opacity: 0; transform: translateY(6px); } }
+.scroll-chevron { animation: scrollDrop 2s ease-in-out infinite; }
+
+.stat-card { transition: transform 0.35s var(--ease-luxury); }
+.stat-card:hover { transform: translateY(-6px); }
+
+.service-list li { position: relative; cursor: none; padding-bottom: 6px; }
+.service-list li::after { content: ''; position: absolute; bottom: 0; left: 0; height: 1px; width: 0; background: var(--charcoal); transition: width 0.4s var(--ease-luxury); }
+.service-list li.active::after { width: 100%; }
+
+.accordion-content { overflow: hidden; max-height: 0; transition: max-height 0.6s var(--ease-luxury), opacity 0.4s ease; opacity: 0; }
+.accordion-content.open { max-height: 500px; opacity: 1; }
+
+.listing-card { overflow: hidden; cursor: none; transition: box-shadow 0.5s ease; }
+.listing-card:hover { box-shadow: 0 24px 64px rgba(46,42,36,0.12); }
+.listing-card .img-wrap { overflow: hidden; position: relative; }
+.listing-card .img-wrap img { transition: transform 0.8s var(--ease-luxury); width: 100%; height: 100%; object-fit: cover; }
+
+.marquee-track { overflow: hidden; white-space: nowrap; width: 100%; }
+.marquee-inner { display: inline-flex; white-space: nowrap; }
+
+
+.property-card { -webkit-filter: blur(0px); filter: blur(0px); }
+
+.listings-mobile-scroll { -webkit-overflow-scrolling: touch; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; -ms-overflow-style: none; }
+.listings-mobile-scroll::-webkit-scrollbar { display: none; }
+
+.section-pad { padding: clamp(3rem, 8vw, 6rem) clamp(1.25rem, 5vw, 3.5rem); }
+
+
+/* DEFAULT: solid cream — image NOT visible through text */
+
+/* HOVER: image clips INSIDE letterform only */
+
+/* ─── ELARIS Mega Footer Text ────────────────────────────────── */
+
+/* Wrapper: fixed height clips bottom of massive letters intentionally */
+.elaris-mega-wrapper {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  background: #2E2A24;
+  padding: 0;
+  margin: 0;
+  height: clamp(100px, 16vw, 200px);
+}
+
+/* Row: letters sit at bottom, bottom edge clipped by wrapper */
+.elaris-mega-row {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 0 clamp(0.5rem, 2vw, 2rem);
+  position: absolute;
+  bottom: -8px;
+}
+
+/* Each letter — always solid cream, no image clip */
+.elaris-mega-letter {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 700;
+  font-size: clamp(7rem, 19vw, 21rem);
+  letter-spacing: -0.03em;
+  line-height: 1;
+  color: #FAF7F2;
+  -webkit-text-fill-color: #FAF7F2;
+  display: inline-block;
+  position: relative;
+  cursor: default;
+  user-select: none;
+  will-change: transform;
+}
+
+/* Floating polaroid hover card — fixed, follows cursor */
+.elaris-hover-card {
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  width: 160px;
+  height: 110px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.45);
+  opacity: 0;
+  transform: scale(0.85) rotate(-3deg);
+  border: 1px solid rgba(255,255,255,0.1);
+  top: 0;
+  left: 0;
+}
+
+.elaris-hover-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.elaris-hover-card-label {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 8px 10px;
+  background: linear-gradient(to top, rgba(20,17,14,0.82), transparent);
+  color: #FAF7F2;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 10px;
+  font-weight: 300;
+  letter-spacing: 0.1em;
+}
+
+@media (max-width: 640px) {
+  .elaris-mega-wrapper { height: clamp(60px, 14vw, 100px); }
+  .elaris-mega-letter  { font-size: clamp(4rem, 18vw, 8rem); }
+  .elaris-hover-card   { display: none; }
+}
+
+/* ─── WhatsApp Sticky Button ─────────────────────────────────── */
+
+
+@keyframes whatsapp-pulse {
+  0%   { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.5); }
+  70%  { box-shadow: 0 0 0 14px rgba(37, 211, 102, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+}
+
+@media (max-width: 768px) {
+  .whatsapp-sticky { bottom: 1.25rem; right: 1.25rem; }
+}
+/* Listing card image wrapper */
+.listing-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transform-origin: center center;
+  will-change: transform;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.listing-card:hover {
+  box-shadow: 0 12px 48px rgba(20,17,14,0.12) !important;
+}
+
+/* Mobile scroll container hide scrollbar */
+.md\:hidden::-webkit-scrollbar {
+  display: none;
+}
+@media (max-width: 768px) {
+  /* PropertyHero card mobile fix */
+  section > div > div[style*="position: absolute"] {
+    bottom: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    border-radius: 20px 20px 0 0 !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    padding: 20px 20px 28px !important;
+  }
+}
+footer .cursor-dot,
+footer .cursor-ring {
+  opacity: 0 !important;
+  pointer-events: none;
+}
+/* Hide cursor in footer - backup CSS rule */
+footer .cursor-dot,
+footer .cursor-ring {
+  opacity: 0 !important;
+  pointer-events: none;
+}
+.elaris-mega-wrapper {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  background: #2E2A24;  /* ✅ FIX 8: Warm charcoal */
+  padding: 0;
+  margin: 0;
+  height: clamp(100px, 16vw, 200px);
+}
+
+.elaris-mega-row {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding: 0;  /* ✅ NO PADDING */
+  margin: 0;
+  position: absolute;
+  bottom: -8px;
+}
+
+.elaris-mega-letter {
+  flex: 1;
+  min-width: 0;  /* ✅ PREVENTS OVERFLOW */
+  text-align: center;
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 700;
+  font-size: clamp(5rem, 16vw, 14rem);  /* ✅ Slightly smaller */
+  letter-spacing: -0.03em;
+  line-height: 0.85;
+  color: #FAF7F2;
+  -webkit-text-fill-color: #FAF7F2;
+  display: block;
+  overflow: hidden;
+  user-select: none;
+  will-change: transform;
+}
+
+@media (max-width: 768px) {
+  .elaris-mega-letter {
+    font-size: 15vw;  /* ✅ Fits all 6 letters */
+  }
+  .elaris-mega-wrapper {
+    height: auto;
+    overflow: visible;
+  }
+}
+/* Prevent horizontal scroll globally */
+html, body {
+  overflow-x: hidden;
+  max-width: 100vw;
+}
+
+/* Custom scrollbar — thin, elegant */
+::-webkit-scrollbar {
+  width: 3px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #C4B8A8;
+  border-radius: 2px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #2E2A24;
+}
+
+/* Hide scrollbar on mobile */
+@media (max-width: 768px) {
+  ::-webkit-scrollbar {
+    display: none;
+  }
+  * {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+/* Fix any section that causes horizontal overflow */
+section {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+/* Hero mobile optimizations */
+@media (max-width: 768px) {
+  .hero-section {
+    height: 100svh !important; /* Small viewport height */
+  }
+  
+  .hero-bg-img {
+    object-position: 65% center !important; /* Shift focus right on mobile */
+  }
+  
+  .hero-body {
+    display: none; /* Too much text on mobile */
+  }
+  
+  .hero-section h1 {
+    font-size: clamp(2.2rem, 8vw, 3rem) !important;
+    line-height: 1.1 !important;
+  }
+  
+  .hero-section .hero-cta {
+    width: 100%;
+    justify-content: center;
+  }
+}
+/* Hide cursor in footer - backup CSS rule */
+footer .cursor-dot,
+footer .cursor-ring {
+  opacity: 0 !important;
+  pointer-events: none;
+}
+/* ═══════════════════════════════════════════════════════ */
+/* ELARIS MEGA FOOTER — FULL FIX                          */
+/* ═══════════════════════════════════════════════════════ */
+
+.elaris-mega-wrapper {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  background: #2E2A24;
+  padding: 0;
+  margin: 0;
+  height: clamp(100px, 16vw, 200px);
+}
+
+.elaris-mega-row {
+  display: flex;
+  width: 100%;
+  justify-content: space-evenly;  /* ✅ Changed from space-between */
+  align-items: flex-end;
+  padding: 0;
+  margin: 0;
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  right: 0;
+}
+
+.elaris-mega-letter {
+  flex: 1 1 0;  /* ✅ Equal flex distribution */
+  min-width: 0;
+  max-width: 16.666%;  /* ✅ 100% / 6 letters */
+  text-align: center;
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 700;
+  font-size: clamp(4.5rem, 14vw, 12rem);  /* ✅ Reduced size */
+  letter-spacing: -0.04em;
+  line-height: 0.85;
+  color: #FAF7F2;
+  -webkit-text-fill-color: #FAF7F2;
+  display: block;
+  overflow: hidden;
+  user-select: none;
+  will-change: transform;
+  padding: 0 clamp(2px, 0.5vw, 8px);  /* ✅ Small horizontal padding */
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .elaris-mega-wrapper {
+    height: clamp(80px, 14vw, 120px);
+  }
+  
+  .elaris-mega-letter {
+    font-size: 13vw;
+    letter-spacing: -0.03em;
+    padding: 0 1px;
+  }
+}
+
+/* Tablet */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .elaris-mega-letter {
+    font-size: clamp(5rem, 12vw, 9rem);
+  }
+}
+
+/* Desktop Large */
+@media (min-width: 1600px) {
+  .elaris-mega-letter {
+    font-size: 11rem;
+    max-width: 15%;  /* Slightly more room on large screens */
+  }
+}
+/* ═══════════════════════════════════════════════════════ */
+/* ELARIS MEGA FOOTER — FINAL FIXED VERSION               */
+/* ═══════════════════════════════════════════════════════ */
+
+.elaris-mega-wrapper {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  background: #2E2A24;
+  padding: 0;
+  margin: 0;
+  height: clamp(100px, 16vw, 200px);
+}
+
+.elaris-mega-row {
+  display: flex;
+  width: 100%;
+  justify-content: center;  /* ✅ CENTER the letters */
+  align-items: flex-end;
+  padding: 0 clamp(8px, 2vw, 24px);  /* ✅ Safe edge padding */
+  margin: 0;
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  right: 0;
+  gap: clamp(4px, 1.5vw, 20px);  /* ✅ SPACING between letters */
+}
+
+.elaris-mega-letter {
+  flex-shrink: 0;  /* ✅ Don't shrink letters */
+  text-align: center;
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 700;
+  font-size: clamp(5rem, 15vw, 13rem);  /* ✅ Larger size */
+  letter-spacing: -0.02em;  /* ✅ Slight tightening */
+  line-height: 0.85;
+  color: #FAF7F2;
+  -webkit-text-fill-color: #FAF7F2;
+  display: inline-block;
+  user-select: none;
+  will-change: transform;
+  position: relative;
+}
+
+/* Mobile — tighter spacing */
+@media (max-width: 768px) {
+  .elaris-mega-wrapper {
+    height: clamp(80px, 14vw, 120px);
+  }
+  
+  .elaris-mega-row {
+    gap: clamp(2px, 1vw, 8px);  /* ✅ Tighter on mobile */
+    padding: 0 8px;
+  }
+  
+  .elaris-mega-letter {
+    font-size: 14vw;
+  }
+}
+
+/* Tablet */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .elaris-mega-row {
+    gap: clamp(6px, 1.2vw, 14px);
+  }
+  
+  .elaris-mega-letter {
+    font-size: clamp(5rem, 13vw, 10rem);
+  }
+}
+
+/* Desktop Large */
+@media (min-width: 1600px) {
+  .elaris-mega-row {
+    gap: 18px;  /* Fixed spacing on large screens */
+  }
+  
+  .elaris-mega-letter {
+    font-size: 12rem;
+  }
+}
