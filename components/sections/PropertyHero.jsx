@@ -21,7 +21,7 @@ const PROPERTIES = [
     price: 'AED 32,000,000',
     tag: 'BEACHFRONT',
     specs: '5 Beds · 6 Baths · 8,500 sqft',
-    image: '/images/Palm jumeirah villa.png',
+    image: '/images/Palm Jumeirah Garden villa.png',
   },
   {
     id: 3,
