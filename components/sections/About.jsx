@@ -78,7 +78,7 @@ export default function About() {
         </div>
       </div>
 
-  <div
+<div
   className="stats-bar grid grid-cols-2 sm:grid-cols-4"
   style={{ backgroundColor: '#2E2A24', position: 'relative', zIndex: 10 }}
 >

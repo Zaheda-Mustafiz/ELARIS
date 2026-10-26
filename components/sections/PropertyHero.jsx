@@ -21,12 +21,12 @@ const PROPERTIES = [
     price: 'AED 32,000,000',
     tag: 'BEACHFRONT',
     specs: '5 Beds · 6 Baths · 8,500 sqft',
-    image: '/images/Palm jumeirah villa.png',
+    image: '/images/Palm Jumeirah Garden villa.png',
   },
   {
     id: 3,
     name: 'Marina Height apartment',
-    location: 'Palm Jumeirah, Dubai',
+     location: 'Dubai Marina Waterfront',
     description: '5-bedroom beachfront villa with direct beach access, private pool, and panoramic Arabian Gulf views.',
     price: 'AED 32,000,000',
     tag: 'BEACHFRONT',
@@ -36,7 +36,11 @@ const PROPERTIES = [
   {
     id: 4,
     name: 'JBR Beach Front penthouse',
+<<<<<<< HEAD
     location: 'Palm Jumeirah, Dubai',
+=======
+    location: 'Bluewaters Island',
+>>>>>>> origin/main
     description: '5-bedroom beachfront villa with direct beach access, private pool, and panoramic Arabian Gulf views.',
     price: 'AED 32,000,000',
     tag: 'BEACHFRONT',
