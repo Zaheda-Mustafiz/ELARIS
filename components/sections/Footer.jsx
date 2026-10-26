@@ -286,7 +286,8 @@ export default function Footer() {
             href="tel:+97140000000" 
             className="font-dm text-[13px] text-white/50 hover:text-white transition-colors block mt-3"
           >
-            +971 4 XXX XXXX
+            +971 50 284 9174
+            
           </a>
           
           {/* ✅ WhatsApp Link */}
@@ -304,7 +305,7 @@ export default function Footer() {
             DLD Registered Broker
           </p>
           <p className="font-dm text-[11px]" style={{ color: 'rgba(196,184,168,0.5)' }}>
-            RERA No: XXXXXXXXX
+            RERA No: BRN-52101
           </p>
         </div>
       </div>
