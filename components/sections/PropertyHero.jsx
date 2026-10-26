@@ -36,11 +36,7 @@ const PROPERTIES = [
   {
     id: 4,
     name: 'JBR Beach Front penthouse',
-<<<<<<< HEAD
     location: 'Palm Jumeirah, Dubai',
-=======
-    location: 'Bluewaters Island',
->>>>>>> origin/main
     description: '5-bedroom beachfront villa with direct beach access, private pool, and panoramic Arabian Gulf views.',
     price: 'AED 32,000,000',
     tag: 'BEACHFRONT',
